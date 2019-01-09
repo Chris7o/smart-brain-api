@@ -22,14 +22,14 @@ const app = express();
 
 app.use(cors())
 app.use(bodyParser.json());
-app.get('/', (req, res) =>{res.send(database.users);})
+app.get('/', (req, res) =>{res.send('it is working!');})
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
 
 app.post('/register', (req, res ) => { register.handleRegister(req,res,db,bcrypt)})
 app.get('/profile/:id',(req, res) => {profile.handleProfileGet(req, res, db)})
 app.put('/image', (req, res) => {image.handleImage(req, res, db)})
 app.post('/imageUrl', (req, res) => {image.handleApiCall(req, res)})
-const DATABASE_URL = process.env.DATABASE_URL
+// const DATABASE_URL = process.env.DATABASE_URL
 app.listen(process.env.PORT || 3000, ()=> {
 console.log(`app is returning on port ${process.env.PORT }`);
 })
